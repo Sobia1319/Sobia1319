@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobia Wazir | NetSuite Developer & Consultant</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #334e68;
+            --accent-color: #61dafb;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #212529;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+        
+        a {
+            text-decoration: none;
+            color: var(--primary-color);
+            transition: all 0.3s ease;
+        }
+        
+        a:hover {
+            color: var(--accent-color);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header */
+        header {
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid white;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+        
+        .header-text {
+            max-width: 600px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .social-links {
+            margin-top: 1.5rem;
+        }
+        
+        .social-links a {
+            color: white;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+            display: inline-block;
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-3px);
+        }
+        
+        /* Nav */
+        nav {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-weight: bold;
+            font-size: 1.5rem;
+            padding: 1rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            font-weight: 500;
+            padding: 1rem 0;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 0;
+        }
+        
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            position: relative;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* About */
+        .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+        
+        .skill-tag {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+        }
+        
+        /* Experience */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -1px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            top: 20px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+            text-align: right;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -10px;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 6px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .timeline-date {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .timeline-title {
+            margin: 10px 0;
+        }
+        
+        .timeline-company {
+            color: var(--secondary-color);
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+        
+        /* Projects */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .project-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        
+        .project-img {
+            height: 200px;
+            background-color: #eaeaea;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        
+        .project-content {
+            padding: 1.5rem;
+        }
+        
+        .project-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+        
+        .project-tag {
+            background-color: #e9ecef;
+            color: var(--secondary-color);
+            padding: 0.3rem 0.6rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        /* Education */
+        .education-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .education-item {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+        }
+        
+        .education-date {
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        
+        .education-degree {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+        
+        .education-school {
+            color: var(--secondary-color);
+            font-weight: 500;
+        }
+        
+        /* Contact */
+        .contact-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .contact-info ul {
+            list-style: none;
+        }
+        
+        .contact-info li {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .contact-info i {
+            width: 30px;
+            color: var(--primary-color);
+        }
+        
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ced4da;
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: var(--secondary-color);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            margin: 1rem 0;
+        }
+        
+        .footer-links a {
+            color: white;
+            margin: 0 0.5rem;
+            opacity: 0.8;
+        }
+        
+        .footer-links a:hover {
+            opacity: 1;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 99;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+        }
+        
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .profile-img {
+                margin-bottom: 2rem;
+            }
+            
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 60px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 2rem;
+                transition: left 0.3s;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 1rem 0;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+                text-align: left;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header id="home">
+        <div class="container header-content">
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="header-text">
+                <h1>Sobia Wazir</h1>
+                <p class="tagline">NetSuite Developer | NetSuite Consultant | Enterprise Design Thinking Practitioner</p>
+                <p>Specialized in translating customer business requirements into robust NetSuite solutions</p>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/sobia-wazir" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/sobiawazir" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.upwork.com/freelancers/~0171a9c0aff5e5fa4b" target="_blank"><i class="fas fa-briefcase"></i></a>
+                    <a href="mailto:sobiawazir1@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <nav id="navbar">
+        <div class="container nav-container">
+            <div class="logo">SW</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+    
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>As a seasoned NetSuite developer and consultant, I specialize in translating customer business requirements and objectives into robust and effective business solutions within NetSuite. With experience in technical business analysis and a strong educational background in Computer Science, I bring a comprehensive approach to NetSuite implementations and customizations.</p>
+                    <p>I am currently working as a NetSuite Consultant and Developer at OdeCloud, where I help businesses optimize their NetSuite instance for improved efficiency and productivity. I am also an Enterprise Design Thinking Practitioner, which allows me to approach problem-solving with a user-centered mindset.</p>
+                    <div class="skills">
+                        <span class="skill-tag">NetSuite Development</span>
+                        <span class="skill-tag">SuiteScript</span>
+                        <span class="skill-tag">SuiteAnalytics</span>
+                        <span class="skill-tag">ERP</span>
+                        <span class="skill-tag">CRM</span>
+                        <span class="skill-tag">Business Analysis</span>
+                        <span class="skill-tag">Enterprise Design Thinking</span>
+                        <span class="skill-tag">JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="experience" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2>Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <p class="timeline-date">Nov 2024 - Present</p>
+                        <h3 class="timeline-title">Netsuite Consultant and Developer | Explorer Rank</h3>
+                        <p class="timeline-company">OdeCloud</p>
+                        <p>Working as a NetSuite consultant and developer at Explorer rank, focusing on implementing and customizing NetSuite solutions for clients.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <p class="timeline-date">Oct 2024 - Nov 2024</p>
+                        <h3 class="timeline-title">Netsuite Consultant and Developer | Member New Comer Rank</h3>
+                        <p class="timeline-company">OdeCloud</p>
+                        <p>Started at OdeCloud as a NetSuite consultant and developer, learning the company's approach to NetSuite implementations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <p class="timeline-date">Aug 2023 - Present</p>
+                        <h3 class="timeline-title">NetSuite Consultant and Developer</h3>
+                        <p class="timeline-company">Freelance on Upwork</p>
+                        <p>Providing NetSuite development and consulting services to clients worldwide, focusing on customizing NetSuite to meet specific business needs.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <p class="timeline-date">Sept 2024 - Oct 2024</p>
+                        <h3 class="timeline-title">Netsuite Developer</h3>
+                        <p class="timeline-company">IDPDIRECT.COM, United Kingdom</p>
+                        <p>Developed SuiteScript solutions for customizing Order Management processes in NetSuite.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <p class="timeline-date">July 2024 - Aug 2024</p>
+                        <h3 class="timeline-title">Netsuite Developer</h3>
+                        <p class="timeline-company">DCC Consultants, United States</p>
+                        <p>Provided troubleshooting and consultancy services for NetSuite implementations.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <p class="timeline-date">Feb 2020 - May 2023</p>
+                        <h3 class="timeline-title">Technical Business Analyst</h3>
+                        <p class="timeline-company">ScriptExp Private Limited, Pakistan</p>
+                        <p>Analyzed business requirements and translated them into technical specifications for software development projects.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <p class="timeline-date">Aug 2021 - July 2022</p>
+                        <h3 class="timeline-title">Course Instructor</h3>
+                        <p class="timeline-company">University Cambridge School, Faisalabad</p>
+                        <p>Taught Mathematics and ICT courses to students, developing and delivering curriculum content.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <p class="timeline-date">May 2014 - July 2016</p>
+                        <h3 class="timeline-title">Assistant Head</h3>
+                        <p class="timeline-company">IIUI Schools, Mirpur</p>
+                        <p>Served as Assistant Head at IIUI Schools Mirpur, managing academic and administrative functions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="projects">
+        <div class="container">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Order Management Customization</h3>
+                        <p>Developed custom SuiteScript solutions for streamlining the order management process in NetSuite, including custom approval workflows and automated fulfillment processes.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">SuiteScript</span>
+                            <span class="project-tag">Order Management</span>
+                            <span class="project-tag">Workflow</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Custom Dashboard Development</h3>
+                        <p>Created custom dashboards and reports using SuiteAnalytics to provide real-time insights into business performance for executive decision-making.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">SuiteAnalytics</span>
+                            <span class="project-tag">Dashboards</span>
+                            <span class="project-tag">Reporting</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-img">
+                        <i class="fas fa-sync-alt"></i>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Integration Solution</h3>
+                        <p>Developed and implemented an integration solution between NetSuite and an external CRM system, ensuring seamless data flow and business process continuity.</p>
+                        <div class="project-tags">
+                            <span class="project-tag">Integration</span>
+                            <span class="project-tag">RESTlets</span>
+                            <span class="project-tag">API</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="education" style="background-color: #f9f9f9;">
+        <div class="container">
+            <h2>Education</h2>
+            <div class="education-list">
+                <div class="education-item">
+                    <p class="education-date">July 2017 - July 2019</p>
+                    <h3 class="education-degree">Master's degree, Computer Science</h3>
+                    <p class="education-school">Virtual University of Pakistan</p>
+                </div>
+                <div class="education-item">
+                    <p class="education-date">Completed August 2014</p>
+                    <h3 class="education-degree">Bachelor's degree, Computer Science</h3>
+                    <p class="education-school">University of Azad Jammu and Kashmir</p>
+                </div>
+                <div class="education-item">
+                    <p class="education-date">Completed July 2012</p>
+                    <h3 class="education-degree">Intermediate, Computer Science</h3>
+                    <p class="education-school">Azad Jammu & Kashmir Board of Intermediate and Secondary Education (AJKBISE), Mirpur</p>
+                </div>
+                <div class="education-item">
+                    <p class="education-date">Completed June 2010</p>
+                    <h3 class="education-degree">Matriculation, Computer Science</h3>
+                    <p class="education-school">Azad Jammu & Kashmir Board of Intermediate and Secondary Education (AJKBISE), Mirpur</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Me</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get in Touch</h3>
+                    <p>Feel free to contact me for any NetSuite development or consulting opportunities. I'm always open to discussing new projects and collaborations.</p>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> sobiawazir1@gmail.com</li>
+                        <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/sobia-wazir" target="_blank">linkedin.com/in/sobia-wazir</a></li>
+                        <li><i class="fas fa-briefcase"></i> <a href="https://www.upwork.com/freelancers/~0171a9c0aff5e5fa4b" target="_blank">Upwork Profile</a></li>
+                        <li><i class="fab fa-github"></i> <a href="https://github.com/sobiawazir" target="_blank">github.com/sobiawazir</a></li>
+                    </ul>
+                </div>
+                <div class="contact-form">
+                    <form id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Sobia Wazir. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#education">Education</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="back-to-top" id="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <script>
+        // Toggle mobile menu
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 60,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Back to top button
+        const backToTopButton = document.getElementById('back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Form submission
+        const contactForm = document.getElementById('contact-form');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // In a real scenario, you would send the form data to a server
+            // For now, just show an alert
+            alert('Thank you for your message! I will get back to you soon.');
+            contactForm.reset();
+        });
+    </script>
+</body>
+</html>
